@@ -1,15 +1,23 @@
-﻿# Use official .NET runtime
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-WORKDIR /app
-EXPOSE 8080
-
+﻿# ---------------------------
+# Build stage
+# ---------------------------
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
+
+# Copy everything
 COPY . .
+
+# Restore and publish
 RUN dotnet restore
 RUN dotnet publish -c Release -o /app/publish
 
-FROM base AS final
+# ---------------------------
+# Runtime stage
+# ---------------------------
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
+EXPOSE 8080
+
 COPY --from=build /app/publish .
+
 ENTRYPOINT ["dotnet", "QRcodeGenerator.dll"]
