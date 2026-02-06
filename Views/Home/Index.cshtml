@@ -1,0 +1,114 @@
+﻿@{
+    ViewData["Title"] = "Ultimate QR Designer";
+}
+
+<h1>Ultimate QR Designer</h1>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: Darkcyan;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    </style>
+
+<div class="container">
+    <!-- LEFT COLUMN: options -->
+    <div class="left-column card">
+        <h2>QR Type</h2>
+        <select id="qrType" onchange="changeForm()">
+            <option value="text">Text / URL</option>
+            <option value="email">Email</option>
+            <option value="phone">Phone</option>
+            <option value="whatsapp">WhatsApp</option>
+            <option value="wifi">WiFi</option>
+        </select>
+
+        <!-- FORMS -->
+        <div id="textForm" class="form">
+            <input id="textInput" placeholder="Enter text or URL" oninput="updatePreview()" />
+        </div>
+
+        <div id="emailForm" class="form" style="display:none;">
+            <input id="emailInput" placeholder="Email" oninput="updatePreview()" />
+            <input id="emailSubject" placeholder="Subject" oninput="updatePreview()" />
+        </div>
+
+        <div id="phoneForm" class="form" style="display:none;">
+            <input id="phoneInput" placeholder="Phone number" oninput="updatePreview()" />
+        </div>
+
+        <div id="whatsappForm" class="form" style="display:none;">
+            <input id="waNumber" placeholder="WhatsApp number with country code" oninput="updatePreview()" />
+            <input id="waMessage" placeholder="Message" oninput="updatePreview()" />
+        </div>
+
+        <div id="wifiForm" class="form" style="display:none;">
+            <input id="wifiName" placeholder="WiFi Name (SSID)" oninput="updatePreview()" />
+            <input id="wifiPass" placeholder="Password" oninput="updatePreview()" />
+        </div>
+
+        <hr />
+
+        <h2>Design Options</h2>
+
+        <label>Dot Type:</label>
+        <select id="dotType" onchange="updatePreview()">
+            <option value="square">Square</option>
+            <option value="rounded">Rounded</option>
+            <option value="dots">Dots</option>
+            <option value="classy">Stars</option>
+        </select>
+
+        <br /><br />
+
+        <label>Gradient Start:</label>
+        <input type="color" id="qrStartColor" value="#000000" onchange="updatePreview()" />
+
+        <label>Gradient End:</label>
+        <input type="color" id="qrEndColor" value="#000000" onchange="updatePreview()" />
+
+        <br /><br />
+
+        <label>Background:</label>
+        <input type="color" id="bgColor" value="#ffffff" onchange="updatePreview()" />
+
+        <br /><br />
+
+        <label>Frame:</label>
+        <select id="frameType" onchange="updatePreview()">
+            <option value="none">None</option>
+            <option value="square">Square</option>
+            <option value="rounded">Rounded</option>
+        </select>
+
+        <br /><br />
+
+        <label>Logo:</label>
+        <input type="file" id="logoInput" accept="image/*" onchange="updatePreview()" />
+
+        <br /><br />
+
+        <label>Text below QR:</label>
+        <input id="qrLabel" placeholder="Example: Scan Me" oninput="updatePreview()" />
+
+        <div id="warning" class="warning"></div>
+
+        <br />
+        <button onclick="downloadPNG()">Download PNG</button>
+        <button onclick="downloadSVG()">Download SVG</button>
+    </div>
+
+    <!-- RIGHT COLUMN: QR PREVIEW -->
+    <div class="right-column">
+        <div id="qrFrame" class="frame-none" style="min-width:280px; min-height:300px;">
+            <div id="qrBox"></div>
+            <p id="labelText"></p>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
+<script src="~/js/qr.js"></script>

@@ -1,0 +1,144 @@
+﻿body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6f8;
+    padding: 20px;
+    color: #333;
+    text-align: center;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+}
+
+.container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* LEFT OPTIONS COLUMN */
+.left-column {
+    flex: 1;
+    min-width: 300px;
+}
+
+    .left-column .card {
+        display: block;
+    }
+
+/* RIGHT PREVIEW COLUMN */
+.right-column {
+    flex: 1;
+    min-width: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* CARD STYLES */
+.card {
+    display: inline-block;
+    padding: 20px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    text-align: left;
+    max-width: 400px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+    .card h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+input, select, button {
+    padding: 10px;
+    margin: 5px 0;
+    font-size: 16px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    transition: all 0.2s;
+}
+
+    input:focus, select:focus {
+        border-color: #1e90ff;
+        box-shadow: 0 0 5px rgba(30,144,255,0.3);
+    }
+
+button {
+    cursor: pointer;
+    font-weight: bold;
+    background: #1e90ff;
+    color: white;
+    border: none;
+    margin-top: 10px;
+}
+
+    button:hover {
+        background: #0b70d1;
+    }
+
+/* QR FRAME STYLES */
+#qrFrame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.frame-none {
+    padding: 10px;
+}
+
+.frame-square {
+    border: 4px solid #1e90ff;
+    padding: 15px;
+    border-radius: 0;
+}
+
+.frame-rounded {
+    border: 4px solid #1e90ff;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+#labelText {
+    font-weight: bold;
+    margin-top: 8px;
+    color: #1a1a1a;
+    font-size: 18px;
+}
+
+.warning {
+    color: red;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+/* QR BOX */
+#qrBox {
+    margin-top: 10px;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 800px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left-column, .right-column {
+        width: 90%;
+    }
+}
